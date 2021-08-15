@@ -22,7 +22,7 @@ echo "user: ${USERNAME}"
 if [ -n $GIT_USERNAME ]; then
     echo "github username: ${GIT_USERNAME}"
 fi
-echo -n "type (y/n):"
+echo -n "(y/n):"
 read str
 if [ $str != "y" ]; then
     echo "user doesn't created"
