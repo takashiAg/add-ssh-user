@@ -1,41 +1,21 @@
 #!/bin/sh
 
 PROGNAME=$(basename $0)
-VERSION="0.0.1"
+VERSION="0.0.2"
 
-usage_exit() {
-        echo "Usage: $PROGNAME [OPTIONS] username"
-        echo "  This script is create ssh user using github ssh keys."
-        echo
-        echo "Options:"
-        echo "  -h"
-        echo "  -v"
-        echo "  -g [GIT_USERNAME]"
-        echo
-        exit 1
-}
-
-while getopts g: OPT
-do
-    case $OPT in
-        "g" )
-            GIT_USERNAME="$OPTARG"
-            ;;
-        "h")
-            usage_exit
-            ;;
-        \?) usage_exit
-            ;;
-    esac
-done
-
-shift `expr "${OPTIND}" - 1`
-
-if [ $# -lt 1 ]; then
-    usage_exit
+echo -n "type linux username: "
+read USERNAME
+if [ -z $USERNAME ]; then
+    echo "user doesn't created(username is empty)"
+    exit 1
 fi
 
-USERNAME=$1
+echo -n "type github username: "
+read GIT_USERNAME
+if [ -z $GIT_USERNAME ]; then
+    echo "user doesn't created(github username is empty)"
+    exit 1
+fi
 
 echo "create a user below?"
 echo "user: ${USERNAME}"
